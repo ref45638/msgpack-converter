@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <title>MsgPack Converter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/msgpack-lite/0.1.26/msgpack.min.js"
+      integrity="sha512-harMiusNxs02ryf3eqc3iQalz2RSd0z38vzOyuFwvQyW046h2m+/47WiDmPW9soh/p71WQMRSkhSynEww3/bOA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      $(document).ready(()=>{
+        document.getElementById("before").value="gaVoZWxsb6V3b3JsZA=="
+        decodeBase64()
+      })
+
+      decodeBase64 = () => {
+        var before = document.getElementById("before").value.trim();
+        var after = decode(_base64ToArrayBuffer(before));
+        document.getElementById("after").value = JSON.stringify(after);
+        prettyPrint();
+      };
+
+      decodeByteArray = () => {
+        var before = document.getElementById("before").value.trim();
+        before = before.substr(1).substr(0, before.length - 2);
+
+        var after;
+        if (before.includes(",")) {
+          after = decode(Uint8Array.from(before.split(",")));
+        } else {
+          after = decode(Uint8Array.from(before.split(" ")));
+        }
+        document.getElementById("after").value = JSON.stringify(after);
+        prettyPrint();
+      };
+
+      decode = (data) => {
+        var after = msgpack.decode(data);
+        if (typeof after === "object") {
+          Object.keys(after).map((key) => {
+            try {
+              var afterafter = msgpack.decode(after[key]);
+              if (typeof afterafter === "object") after[key] = afterafter;
+            } catch (err) {}
+          });
+        }
+        return after;
+      };
+
+      encodeToBase64 = () => {
+        var after = document.getElementById("after").value;
+        var before = _arrayBufferToBase64(msgpack.encode(JSON.parse(after)));
+        document.getElementById("before").value = before;
+      };
+
+      encodeToByteArray = () => {
+        var after = document.getElementById("after").value;
+        var before = msgpack.encode(JSON.parse(after));
+
+        var value = "[";
+        for (var i = 0; i < before.length; i++) {
+          if (i == 0) {
+            value += before[i];
+          } else {
+            value += ", " + before[i];
+          }
+        }
+        value += "]";
+
+        document.getElementById("before").value = value;
+      };
+
+      _base64ToArrayBuffer = (base64) => {
+        var binary_string = window.atob(base64);
+        var len = binary_string.length;
+        var bytes = new Uint8Array(len);
+        for (var i = 0; i < len; i++) {
+          bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes;
+      };
+
+      _arrayBufferToBase64 = (buffer) => {
+        var binary = "";
+        var bytes = new Uint8Array(buffer);
+        var len = bytes.byteLength;
+        for (var i = 0; i < len; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+      };
+
+      prettyPrint = () => {
+        var ugly = document.getElementById("after").value;
+        var obj = JSON.parse(ugly);
+        var pretty = JSON.stringify(obj, undefined, 4);
+        document.getElementById("after").value = pretty;
+      };
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="navbar-brand">MsgPack Converter</div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="">Demo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/ref45638/msgpack-converter">Github</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-5">
+          <div class="row row-cols-1">
+            <div class="col p-3">base64 or []byte</div>
+            <div class="col">
+              <textarea style="width: 100%" id="before" rows="30"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="row">
+            <div class="col" style="margin-top: 200">
+              <button style="width: 100%" onclick="decodeBase64()">decode base64〉</button>
+              <button style="width: 100%" onclick="decodeByteArray()">decode []byte〉</button>
+            </div>
+            <div class="col" style="margin-top: 200">
+              <button style="width: 100%" onclick="encodeToBase64()">〈encode to base64</button>
+              <button style="width: 100%" onclick="encodeToByteArray()">〈encode to []byte</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="row row-cols-1">
+            <div class="col p-3">JSON</div>
+            <div class="col">
+              <textarea style="width: 100%" id="after" rows="30"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9DE7E8R1W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-V9DE7E8R1W");
+  </script>
+</html>
