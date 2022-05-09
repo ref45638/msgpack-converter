@@ -20,10 +20,10 @@
       referrerpolicy="no-referrer"
     ></script>
     <script>
-      $(document).ready(()=>{
-        document.getElementById("before").value="gaVoZWxsb6V3b3JsZA=="
-        decodeBase64()
-      })
+      $(document).ready(() => {
+        document.getElementById("before").value = "gaVoZWxsb6V3b3JsZA==";
+        decodeBase64();
+      });
 
       decodeBase64 = () => {
         var before = document.getElementById("before").value.trim();
@@ -132,19 +132,19 @@
           <div class="row row-cols-1">
             <div class="col p-3">base64 or []byte</div>
             <div class="col">
-              <textarea style="width: 100%" id="before" rows="30"></textarea>
+              <textarea class="form-control" style="border: 1px solid #000000; width: 100%" id="before" rows="30"></textarea>
             </div>
           </div>
         </div>
         <div class="col-2">
           <div class="row-1">
             <div class="col" style="margin-top: 200">
-              <button class="btn btn-outline-primary" style="width: 100%" onclick="decodeBase64()">decode base64〉</button>
-              <button class="btn btn-outline-primary" style="width: 100%" onclick="decodeByteArray()">decode []byte〉</button>
+              <button class="btn btn-outline-primary" style="width: 100%" onclick="decodeBase64()">decode base64 〉</button>
+              <button class="btn btn-outline-primary" style="width: 100%" onclick="decodeByteArray()">decode []byte 〉</button>
             </div>
             <div class="col" style="margin-top: 200">
-              <button class="btn btn-outline-dark" style="width: 100%" onclick="encodeToBase64()">〈encode to base64</button>
-              <button class="btn btn-outline-dark" style="width: 100%" onclick="encodeToByteArray()">〈encode to []byte</button>
+              <button class="btn btn-outline-dark" style="width: 100%" onclick="encodeToBase64()">〈 encode to base64</button>
+              <button class="btn btn-outline-dark" style="width: 100%" onclick="encodeToByteArray()">〈 encode to []byte</button>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@
           <div class="row row-cols-1">
             <div class="col p-3">JSON</div>
             <div class="col">
-              <textarea style="width: 100%" id="after" rows="30"></textarea>
+              <textarea class="form-control" style="border: 1px solid #000000; width: 100%" id="after" rows="30"></textarea>
             </div>
           </div>
         </div>
