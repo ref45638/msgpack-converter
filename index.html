@@ -35,90 +35,6 @@
         document.getElementById("before").value = "gaVoZWxsb6V3b3JsZA==";
         decodeBase64();
       });
-
-      decodeBase64 = () => {
-        var before = document.getElementById("before").value.trim();
-        var after = decode(_base64ToArrayBuffer(before));
-        document.getElementById("after").value = JSON.stringify(after);
-        prettyPrint();
-      };
-
-      decodeByteArray = () => {
-        var before = document.getElementById("before").value.trim();
-        before = before.substr(1).substr(0, before.length - 2);
-
-        var after;
-        if (before.includes(",")) {
-          after = decode(Uint8Array.from(before.split(",")));
-        } else {
-          after = decode(Uint8Array.from(before.split(" ")));
-        }
-        document.getElementById("after").value = JSON.stringify(after);
-        prettyPrint();
-      };
-
-      decode = (data) => {
-        var after = msgpack.decode(data);
-        if (typeof after === "object") {
-          Object.keys(after).map((key) => {
-            try {
-              var afterafter = msgpack.decode(after[key]);
-              if (typeof afterafter === "object") after[key] = afterafter;
-            } catch (err) {}
-          });
-        }
-        return after;
-      };
-
-      encodeToBase64 = () => {
-        var after = document.getElementById("after").value;
-        var before = _arrayBufferToBase64(msgpack.encode(JSON.parse(after)));
-        document.getElementById("before").value = before;
-      };
-
-      encodeToByteArray = () => {
-        var after = document.getElementById("after").value;
-        var before = msgpack.encode(JSON.parse(after));
-
-        var value = "[";
-        for (var i = 0; i < before.length; i++) {
-          if (i == 0) {
-            value += before[i];
-          } else {
-            value += ", " + before[i];
-          }
-        }
-        value += "]";
-
-        document.getElementById("before").value = value;
-      };
-
-      _base64ToArrayBuffer = (base64) => {
-        var binary_string = window.atob(base64);
-        var len = binary_string.length;
-        var bytes = new Uint8Array(len);
-        for (var i = 0; i < len; i++) {
-          bytes[i] = binary_string.charCodeAt(i);
-        }
-        return bytes;
-      };
-
-      _arrayBufferToBase64 = (buffer) => {
-        var binary = "";
-        var bytes = new Uint8Array(buffer);
-        var len = bytes.byteLength;
-        for (var i = 0; i < len; i++) {
-          binary += String.fromCharCode(bytes[i]);
-        }
-        return window.btoa(binary);
-      };
-
-      prettyPrint = () => {
-        var ugly = document.getElementById("after").value;
-        var obj = JSON.parse(ugly);
-        var pretty = JSON.stringify(obj, undefined, 4);
-        document.getElementById("after").value = pretty;
-      };
     </script>
   </head>
   <body>
@@ -133,6 +49,9 @@
             <li class="nav-item">
               <a class="nav-link" href="https://github.com/ref45638/msgpack-converter">Github</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://ref45638.github.io/">My Intro</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -144,7 +63,13 @@
           <div class="row row-cols-1">
             <div class="col p-3" style="font-size: 20px; font-weight: bold">base64 or []byte</div>
             <div class="col">
-              <textarea class="form-control" style="border: 1px solid #000000; width: 100%" id="before" rows="30"></textarea>
+              <textarea
+                class="form-control"
+                holdplace="base64 or []byte"
+                style="border: 1px solid #000000; width: 100%"
+                id="before"
+                rows="30"
+              ></textarea>
             </div>
           </div>
         </div>
@@ -181,4 +106,5 @@
     gtag("js", new Date());
     gtag("config", "G-V9DE7E8R1W");
   </script>
+  <script async src="js/index.js"></script>
 </html>
