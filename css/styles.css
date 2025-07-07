@@ -1,0 +1,507 @@
+/* 基本樣式 */
+.code-example {
+  padding: 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  margin: 10px 0;
+}
+.help-section {
+  margin-bottom: 20px;
+}
+.help-section h4 {
+  margin-bottom: 10px;
+}
+.help-tip {
+  padding: 10px;
+  border-left: 4px solid;
+  margin: 15px 0;
+}
+/* 提高模態視窗內容的可讀性 */
+.modal-body {
+  line-height: 1.6;
+}
+
+/* 淺色模式樣式 */
+:root {
+  --background-color: #ffffff;
+  --text-color: #212529;
+  --border-color: #000000;
+  --card-bg: #ffffff;
+  --code-bg: #f8f9fa;
+  --tip-bg: #e7f5ff;
+  --tip-border: #0d6efd;
+  --help-title: #0d6efd;
+  --accordion-active: #e7f1ff;
+}
+
+/* 深色模式樣式 */
+[data-theme="dark"] {
+  --background-color: #121212; /* 基本背景色 */
+  --text-color: #e9ecef; /* 更明亮的文字顏色 */
+  --border-color: #495057;
+  --card-bg: #1e1e1e; /* 更深的卡片背景 */
+  --code-bg: #252525; /* 更深的程式碼背景 */
+  --tip-bg: #0d3b66;
+  --tip-border: #3a86ff;
+  --help-title: #4d97ff; /* 更亮的藍色標題 */
+  --accordion-active: #2a2a2a; /* 更深的折疊面板背景 */
+  --navbar-bg: #050505; /* 更深的導航欄背景色 */
+  --container-bg: #1a1a1a; /* 容器背景色 */
+  --main-content-bg: #1d1d1d; /* 較淺的主要內容區域背景色 */
+  --help-section-border: #333333; /* 幫助區塊邊框顏色 */
+  --help-text: #d0d0d0; /* 幫助區塊文字顏色 */
+}
+
+/* 應用主題變數 */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+textarea {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 深色模式下文本區域樣式增強 */
+[data-theme="dark"] textarea {
+  background-color: #252525 !important; /* 更深的背景色 */
+  color: #e9ecef !important;
+  border-color: #333 !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* 導航欄和容器樣式 */
+[data-theme="dark"] .navbar.bg-dark {
+  background-color: var(--navbar-bg) !important; /* 使用變數的導航欄顏色 */
+  border-bottom: 1px solid #333333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 增加導航欄陰影 */
+}
+
+/* 確保所有容器在深色模式下有正確背景色 */
+[data-theme="dark"] .container,
+[data-theme="dark"] .container-fluid {
+  background-color: var(--background-color);
+}
+
+/* 調整 theme-aware-container 以增強深色模式下的視覺層次感 */
+[data-theme="dark"] .theme-aware-container {
+  background-color: #1a1a1a !important; /* 稍微淺一點的容器背景色 */
+  border-bottom: 1px solid #2a2a2a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 按鈕樣式 */
+[data-theme="dark"] .btn-outline-primary {
+  color: #3a86ff;
+  border-color: #3a86ff;
+}
+
+[data-theme="dark"] .btn-outline-primary:hover {
+  background-color: #3a86ff;
+  color: #212529;
+}
+
+[data-theme="dark"] .btn-outline-primary:focus {
+  box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25);
+}
+
+[data-theme="dark"] .btn-outline-dark {
+  color: #e9ecef;
+  border-color: #6c757d;
+}
+
+[data-theme="dark"] .btn-outline-dark:hover {
+  background-color: #6c757d;
+  color: #e9ecef;
+}
+
+[data-theme="dark"] .btn-info {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* 添加 btn-info 在深色模式下的懸停和點擊狀態 */
+[data-theme="dark"] .btn-info:hover,
+[data-theme="dark"] .btn-info:focus {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+[data-theme="dark"] .btn-info:active,
+[data-theme="dark"] .btn-info.active {
+  background-color: #0a58ca;
+  border-color: #0a53be;
+}
+
+[data-theme="dark"] .btn-info.theme-aware-btn:hover {
+  background-color: #3a86ff;
+  border-color: #2a76ef;
+  box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background-color: #495057;
+  border-color: #495057;
+}
+
+/* 警告訊息樣式 */
+[data-theme="dark"] .alert-danger {
+  background-color: #471a1a;
+  color: #f8d7da;
+  border-color: #842029;
+}
+
+/* 文本顏色調整 */
+[data-theme="dark"] .text-muted {
+  color: #adb5bd !important;
+}
+
+/* 下拉選單樣式 */
+[data-theme="dark"] .dropdown-menu {
+  background-color: #343a40;
+  border-color: #6c757d;
+}
+
+[data-theme="dark"] .dropdown-item {
+  color: #f8f9fa;
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+  background-color: #495057;
+  color: #f8f9fa;
+}
+
+/* 在深色模式下調整 btn-outline-light */
+[data-theme="dark"] .btn-outline-light {
+  color: #adb5bd;
+  border-color: #6c757d;
+}
+
+[data-theme="dark"] .btn-outline-light:hover {
+  background-color: #495057;
+  color: #e9ecef;
+  border-color: #6c757d;
+}
+
+[data-theme="dark"] .btn-outline-light:focus,
+[data-theme="dark"] .btn-outline-light:active {
+  background-color: #5a6268;
+  color: #e9ecef;
+  border-color: #6c757d;
+  box-shadow: 0 0 0 0.25rem rgba(248, 249, 250, 0.2);
+}
+
+/* 卡片和模組化元素 */
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.code-example {
+  background-color: var(--code-bg);
+  color: var(--text-color);
+}
+
+.help-section h4 {
+  color: var(--help-title);
+}
+
+.help-tip {
+  background-color: var(--tip-bg);
+  border-color: var(--tip-border);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--accordion-active);
+  color: var(--text-color);
+}
+
+.accordion-button {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.accordion-body {
+  background-color: var(--card-bg);
+}
+
+/* 深色模式下 accordion 元素的增強樣式 */
+[data-theme="dark"] .accordion-item {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+[data-theme="dark"] .accordion-button {
+  background-color: #252525;
+  color: #e9ecef;
+}
+
+[data-theme="dark"] .accordion-button:not(.collapsed) {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.125);
+}
+
+[data-theme="dark"] .accordion-button::after {
+  filter: invert(1);
+}
+
+[data-theme="dark"] .accordion-body {
+  background-color: #1e1e1e;
+  color: #e9ecef;
+  border-top: 1px solid #333;
+}
+
+.modal-content {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* 改進模態視窗的顏色 */
+[data-theme="dark"] .modal-content {
+  background-color: #1e1e1e !important;
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .modal-header {
+  background-color: #252525 !important;
+  border-bottom-color: #495057;
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .modal-footer {
+  background-color: #252525 !important;
+  border-top-color: #495057;
+  color: var(--text-color) !important;
+}
+
+/* 模態視窗底部按鈕樣式 */
+[data-theme="dark"] .modal-footer .btn-secondary {
+  background-color: #495057;
+  border-color: #495057;
+  color: #e9ecef;
+}
+
+[data-theme="dark"] .modal-footer .btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+[data-theme="dark"] .modal-footer .btn-secondary:focus,
+[data-theme="dark"] .modal-footer .btn-secondary:active {
+  background-color: #4e555b;
+  border-color: #4e555b;
+  box-shadow: 0 0 0 0.25rem rgba(82, 88, 93, 0.5);
+}
+
+[data-theme="dark"] .modal-body {
+  background-color: #1e1e1e !important;
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .modal-backdrop {
+  opacity: 0.8 !important;
+}
+
+/* 確保關閉按鈕在深色模式下可見 */
+[data-theme="dark"] .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* 下拉選單箭頭顏色調整 */
+[data-theme="dark"] .dropdown-toggle::after {
+  border-top-color: #adb5bd;
+}
+
+[data-theme="dark"] .dropdown-toggle:hover::after {
+  border-top-color: #e9ecef;
+}
+
+/* 主題切換按鈕樣式 */
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.theme-icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
+
+/* 主題下拉選單特殊樣式 */
+[data-theme="dark"] #themeDropdown {
+  background-color: transparent;
+  color: #adb5bd;
+}
+
+[data-theme="dark"] #themeDropdown:hover {
+  background-color: rgba(73, 80, 87, 0.7);
+  color: #e9ecef;
+}
+
+[data-theme="dark"] #themeDropdown:focus,
+[data-theme="dark"] #themeDropdown:active {
+  background-color: rgba(90, 98, 104, 0.8);
+  color: #e9ecef;
+}
+
+/* 增強深色模式的視覺對比度 */
+[data-theme="dark"] a {
+  color: #3a86ff;
+}
+
+[data-theme="dark"] a:hover {
+  color: #61a5ff;
+}
+
+/* 調整輸入框的焦點狀態顏色 */
+[data-theme="dark"] textarea:focus {
+  box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25) !important;
+  border-color: #3a86ff !important;
+}
+
+/* 主題感知按鈕 */
+.theme-aware-btn {
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .btn-outline-primary.theme-aware-btn {
+  color: #4d97ff;
+  border-color: #4d97ff;
+}
+
+[data-theme="dark"] .btn-outline-primary.theme-aware-btn:hover {
+  background-color: #4d97ff;
+  color: #121212;
+}
+
+[data-theme="dark"] .btn-outline-primary.theme-aware-btn:focus,
+[data-theme="dark"] .btn-outline-primary.theme-aware-btn:active {
+  background-color: #3d87f0;
+  color: #121212;
+  box-shadow: 0 0 0 0.25rem rgba(77, 151, 255, 0.35);
+}
+
+[data-theme="dark"] .btn-outline-dark.theme-aware-btn {
+  color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+[data-theme="dark"] .btn-outline-dark.theme-aware-btn:hover {
+  background-color: #adb5bd;
+  color: #121212;
+}
+
+[data-theme="dark"] .btn-outline-dark.theme-aware-btn:focus,
+[data-theme="dark"] .btn-outline-dark.theme-aware-btn:active {
+  background-color: #9da5ad;
+  color: #121212;
+  box-shadow: 0 0 0 0.25rem rgba(173, 181, 189, 0.35);
+}
+
+/* 針對主題感知的 info 按鈕 */
+[data-theme="dark"] .btn-info.theme-aware-btn {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+[data-theme="dark"] .btn-info.theme-aware-btn:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+[data-theme="dark"] .btn-info.theme-aware-btn:focus,
+[data-theme="dark"] .btn-info.theme-aware-btn:active {
+  background-color: #0a58ca;
+  border-color: #0a53be;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+}
+
+/* 主題感知容器 */
+.theme-aware-container {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+[data-theme="dark"] .theme-aware-container {
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* 頂部信息容器特殊樣式 */
+[data-theme="dark"] .header-info-container {
+  background-color: #0c0c0c !important; /* 介於導航欄和主內容之間的顏色 */
+  border-bottom: 1px solid #333333;
+  border-radius: 0;
+  margin-bottom: 8px;
+}
+
+/* 內容標題 */
+[data-theme="dark"] .content-title {
+  color: #ffffff; /* 更亮的白色 */
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* 增加陰影提高可讀性 */
+}
+
+/* 幫助區塊和範例程式碼樣式 */
+[data-theme="dark"] .help-section {
+  border-bottom: 1px solid var(--help-section-border);
+  padding-bottom: 15px;
+}
+
+[data-theme="dark"] .help-section h4 {
+  color: var(--help-title);
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+[data-theme="dark"] .help-section p {
+  color: var(--help-text);
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .help-tip {
+  background-color: var(--tip-bg);
+  border-color: var(--tip-border);
+  color: #d9e6f2;
+}
+
+[data-theme="dark"] .code-example {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+[data-theme="dark"] .code-example code {
+  color: #a6e3ff;
+}
+
+[data-theme="dark"] .card {
+  background-color: #232323;
+  border-color: #333;
+}
+
+[data-theme="dark"] .card-body {
+  color: var(--help-text);
+}
+
+/* 主要內容容器樣式 */
+.main-content-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+[data-theme="dark"] .main-content-container {
+  background-color: var(--main-content-bg) !important;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 5px; /* 增加與頂部的間距 */
+  padding: 0px 10px 0px 10px; /* 增加內邊距 */
+}
