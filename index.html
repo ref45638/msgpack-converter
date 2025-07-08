@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="zh-Hant">
   <head>
     <meta charset="utf-8" />
     <title>MsgPack Converter | MsgPack to JSON Decoder and Encoder</title>
@@ -7,6 +7,46 @@
       content="MsgPack Converter helps Decode and Encode between MsgPack(base64 or []byte) and JSON. It is an easy and simple use online tool to convert your data."
     />
     <meta name="keywords" content="MessagePack,msgpack,JSON,Decoder,Encoder,Converter" />
+    <link rel="canonical" href="https://ref45638.github.io/msgpack-converter/" />
+    <link rel="alternate" hreflang="en" href="https://ref45638.github.io/msgpack-converter/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://ref45638.github.io/msgpack-converter/" />
+    <link rel="alternate" hreflang="x-default" href="https://ref45638.github.io/msgpack-converter/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ref45638.github.io/msgpack-converter/">
+    <meta property="og:title" content="MsgPack Converter | MsgPack to JSON Decoder and Encoder">
+    <meta property="og:description" content="An easy and simple online tool to decode and encode between MsgPack (in base64 or byte array) and JSON.">
+    <!-- <meta property="og:image" content="URL_to_your_image.jpg"> -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ref45638.github.io/msgpack-converter/">
+    <meta property="twitter:title" content="MsgPack Converter | MsgPack to JSON Decoder and Encoder">
+    <meta property="twitter:description" content="An easy and simple online tool to decode and encode between MsgPack (in base64 or byte array) and JSON.">
+    <!-- <meta property="twitter:image" content="URL_to_your_image.jpg"> -->
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "MsgPack Converter",
+      "operatingSystem": "WEB",
+      "applicationCategory": "DeveloperApplication",
+      "description": "An online tool to decode and encode data between MessagePack (MsgPack) and JSON formats. Supports base64 and byte array inputs.",
+      "url": "https://ref45638.github.io/msgpack-converter/",
+      "author": {
+        "@type": "Person",
+        "name": "ref45638",
+        "url": "https://github.com/ref45638"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      }
+    }
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- JSON Editor 庫 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.9.2/jsoneditor.min.css" rel="stylesheet" type="text/css">
@@ -40,7 +80,7 @@
         document.getElementById("before").value = "gaVoZWxsb6V3b3JsZA==";
         try {
           decodeBase64();
-          
+
           // 檢查是否是首次訪問
           if(!localStorage.getItem('msgpack_converter_visited')) {
             // 顯示使用說明模態視窗
@@ -58,31 +98,41 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <div class="navbar-brand"><h1 style="font-size: 32px">MsgPack Converter</h1></div>
+        <div class="navbar-brand" style="font-size: 32px">MsgPack Converter</div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="">Demo</a>
+              <a class="nav-link active" aria-current="page" href="" data-i18n="nav.demo"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal">使用說明</a>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal" data-i18n="nav.help"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://github.com/ref45638/msgpack-converter">Github</a>
+              <a class="nav-link" href="https://github.com/ref45638/msgpack-converter" data-i18n="nav.github"></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://ref45638.github.io/">My Intro</a>
+              <a class="nav-link" href="https://ref45638.github.io/" data-i18n="nav.myIntro"></a>
             </li>
           </ul>
-          <div class="dropdown">
+          <div class="dropdown me-2">
             <button class="btn btn-outline-light dropdown-toggle" type="button" id="themeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-sun-fill theme-icon" id="theme-icon"></i>
-              <span id="theme-text">外觀主題</span>
+              <span id="theme-text" data-i18n="theme.title"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="themeDropdown">
-              <li><button class="dropdown-item" type="button" onclick="setTheme('light')"><i class="bi bi-sun-fill"></i> 一般模式</button></li>
-              <li><button class="dropdown-item" type="button" onclick="setTheme('dark')"><i class="bi bi-moon-fill"></i> 深色模式</button></li>
-              <li><button class="dropdown-item" type="button" onclick="setTheme('system')"><i class="bi bi-circle-half"></i> 跟隨系統</button></li>
+              <li><button class="dropdown-item" type="button" onclick="setTheme('light')"><i class="bi bi-sun-fill"></i> <span data-i18n="theme.light"></span></button></li>
+              <li><button class="dropdown-item" type="button" onclick="setTheme('dark')"><i class="bi bi-moon-fill"></i> <span data-i18n="theme.dark"></span></button></li>
+              <li><button class="dropdown-item" type="button" onclick="setTheme('system')"><i class="bi bi-circle-half"></i> <span data-i18n="theme.system"></span></button></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-translate"></i>
+              <span data-i18n="language.title"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+              <li><button class="dropdown-item" type="button" onclick="setLanguage('en')"><span data-i18n="language.en"></span></button></li>
+              <li><button class="dropdown-item" type="button" onclick="setLanguage('zh-Hant')"><span data-i18n="language.zh-Hant"></span></button></li>
             </ul>
           </div>
         </div>
@@ -91,28 +141,27 @@
     <div class="container-fluid mt-2 theme-aware-container header-info-container">
       <div class="row">
         <div class="col-10">
-          <h2 style="font-size: 15px">MsgPack 轉換工具 - 可處理 BASE64 或位元組陣列格式</h2>
-          <p class="text-muted">不確定如何使用？點擊導航欄中的「<a href="#" data-bs-toggle="modal" data-bs-target="#helpModal">使用說明</a>」了解詳情。</p>
+          <h1 style="font-size: 15px" data-i18n="header.title"></h1>
+          <p class="text-muted" data-i18n="header.helpLink"></p>
         </div>
         <div class="col-2 text-end">
           <button class="btn btn-sm btn-info theme-aware-btn" data-bs-toggle="modal" data-bs-target="#helpModal">
-            <i class="bi bi-question-circle"></i> 使用說明
+            <i class="bi bi-question-circle"></i> <span data-i18n="header.helpButton"></span>
           </button>
         </div>
       </div>
     </div>
-    <div class="alert alert-danger" role="alert" id="error-message" style="display: none; margin: 10px;">
-      錯誤訊息將顯示在這裡
+    <div class="alert alert-danger" role="alert" id="error-message" style="display: none; margin: 10px;" data-i18n="error.message">
     </div>
     <div class="container-fluid theme-aware-container main-content-container">
       <div class="row">
         <div class="col-5">
           <div class="row row-cols-1">
-            <div class="col p-3 content-title" style="font-size: 20px; font-weight: bold">base64 or []byte</div>
+            <div class="col p-3 content-title" style="font-size: 20px; font-weight: bold" data-i18n="input.title"></div>
             <div class="col">
               <textarea
                 class="form-control"
-                placeholder="輸入 base64 或位元組陣列格式的 MsgPack 數據"
+                data-i18n="input.placeholder"
                 style="border: 1px solid var(--border-color); width: 100%"
                 id="before"
                 rows="30"
@@ -123,25 +172,25 @@
         <div class="col-2">
           <div class="row-1">
             <div class="col" style="margin-top: 200">
-              <button class="btn btn-outline-primary theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="decodeBase64()">decode base64 〉</button>
-              <button class="btn btn-outline-primary theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="decodeByteArray()">decode []byte 〉</button>
+              <button class="btn btn-outline-primary theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="decodeBase64()" data-i18n="button.decodeBase64"></button>
+              <button class="btn btn-outline-primary theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="decodeByteArray()" data-i18n="button.decodeByteArray"></button>
             </div>
             <div class="col" style="margin-top: 200">
-              <button class="btn btn-outline-dark theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="encodeToBase64()">〈 encode to base64</button>
-              <button class="btn btn-outline-dark theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="encodeToByteArray()">〈 encode to []byte</button>
+              <button class="btn btn-outline-dark theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="encodeToBase64()" data-i18n="button.encodeBase64"></button>
+              <button class="btn btn-outline-dark theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="encodeToByteArray()" data-i18n="button.encodeByteArray"></button>
             </div>
           </div>
         </div>
         <div class="col-5">
           <div class="row row-cols-1">
-            <div class="col p-3 content-title" style="font-size: 20px; font-weight: bold">JSON</div>
+            <div class="col p-3 content-title" style="font-size: 20px; font-weight: bold" data-i18n="output.title"></div>
             <div class="col">
               <textarea 
                 class="form-control" 
                 style="border: 1px solid var(--border-color); width: 100%" 
                 id="after" 
                 rows="30"
-                placeholder="這裡將顯示 JSON 結果"
+                data-i18n="output.placeholder"
               ></textarea>
             </div>
           </div>
@@ -153,152 +202,132 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="helpModalLabel">MsgPack Converter 使用說明</h5>
+            <h5 class="modal-title" id="helpModalLabel" data-i18n="modal.title"></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="help-section">
-              <h4>什麼是 MsgPack？</h4>
-              <p>MessagePack 是一種高效的二進位序列化格式。它允許您像 JSON 一樣在不同的語言之間交換數據，但更快更小。</p>
-              <div class="help-tip">
-                <strong>小知識：</strong> MessagePack 在序列化後的大小通常比 JSON 小 20-40%，同時仍保持良好的可讀性和易用性。
+              <h4 data-i18n="help.whatIsMsgpack.title"></h4>
+              <p data-i18n="help.whatIsMsgpack.content"></p>
+              <div class="help-tip" data-i18n="help.whatIsMsgpack.tip">
               </div>
             </div>
             
             <div class="help-section">
-              <h4>如何使用本工具？</h4>
+              <h4 data-i18n="help.howToUse.title"></h4>
             <div class="accordion" id="helpAccordion">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Base64 格式的 MsgPack 解碼
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-i18n="help.decodeBase64.title">
                   </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#helpAccordion">
                   <div class="accordion-body">
                     <ol>
-                      <li>在左側文本框中輸入 Base64 格式的 MsgPack 數據</li>
-                      <li>點擊 "decode base64 〉" 按鈕</li>
-                      <li>結果將顯示在右側文本框中</li>
+                      <li data-i18n="help.decodeBase64.step1"></li>
+                      <li data-i18n="help.decodeBase64.step2"></li>
+                      <li data-i18n="help.decodeBase64.step3"></li>
                     </ol>
-                    <div class="code-example">
-                      <strong>示例輸入:</strong><br>
-                      <code>gaVoZWxsb6V3b3JsZA==</code>
+                    <div class="code-example" data-i18n="help.decodeBase64.exampleInput">
                     </div>
-                    <div class="code-example">
-                      <strong>示例輸出:</strong><br>
-                      <code>{"hello":"world"}</code>
+                    <div class="code-example" data-i18n="help.decodeBase64.exampleOutput">
                     </div>
                   </div>
                 </div>
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    位元組陣列格式的 MsgPack 解碼
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" data-i18n="help.decodeByteArray.title">
                   </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#helpAccordion">
                   <div class="accordion-body">
                     <ol>
-                      <li>在左側文本框中輸入位元組陣列格式的 MsgPack 數據 (如 [129, 165, 104, 101, 108, 108, 111, 165, 119, 111, 114, 108, 100])</li>
-                      <li>點擊 "decode []byte 〉" 按鈕</li>
-                      <li>結果將顯示在右側文本框中</li>
+                      <li data-i18n="help.decodeByteArray.step1"></li>
+                      <li data-i18n="help.decodeByteArray.step2"></li>
+                      <li data-i18n="help.decodeByteArray.step3"></li>
                     </ol>
-                    <div class="code-example">
-                      <strong>示例輸入:</strong><br>
-                      <code>[129, 165, 104, 101, 108, 108, 111, 165, 119, 111, 114, 108, 100]</code>
+                    <div class="code-example" data-i18n="help.decodeByteArray.exampleInput">
                     </div>
-                    <div class="code-example">
-                      <strong>示例輸出:</strong><br>
-                      <code>{"hello":"world"}</code>
+                    <div class="code-example" data-i18n="help.decodeByteArray.exampleOutput">
                     </div>
                   </div>
                 </div>
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    JSON 編碼為 MsgPack
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" data-i18n="help.encodeJson.title">
                   </button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#helpAccordion">
                   <div class="accordion-body">
                     <ol>
-                      <li>在右側文本框中輸入有效的 JSON 數據</li>
-                      <li>點擊 "〈 encode to base64" 按鈕可獲得 Base64 格式的 MsgPack</li>
-                      <li>點擊 "〈 encode to []byte" 按鈕可獲得位元組陣列格式的 MsgPack</li>
+                      <li data-i18n="help.encodeJson.step1"></li>
+                      <li data-i18n="help.encodeJson.step2"></li>
+                      <li data-i18n="help.encodeJson.step3"></li>
                     </ol>
-                    <div class="code-example">
-                      <strong>示例輸入:</strong><br>
-                      <code>{"hello":"world"}</code>
+                    <div class="code-example" data-i18n="help.encodeJson.exampleInput">
                     </div>
-                    <div class="code-example">
-                      <strong>Base64 輸出示例:</strong><br>
-                      <code>gaVoZWxsb6V3b3JsZA==</code>
+                    <div class="code-example" data-i18n="help.encodeJson.exampleOutputBase64">
                     </div>
-                    <div class="code-example">
-                      <strong>位元組陣列輸出示例:</strong><br>
-                      <code>[129, 165, 104, 101, 108, 108, 111, 165, 119, 111, 114, 108, 100]</code>
+                    <div class="code-example" data-i18n="help.encodeJson.exampleOutputByteArray">
                     </div>
                   </div>
                 </div>
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFour">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    錯誤處理
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" data-i18n="help.errorHandling.title">
                   </button>
                 </h2>
                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#helpAccordion">
                   <div class="accordion-body">
-                    <p>如果輸入了無效的數據，頁面頂部會顯示錯誤訊息。常見的錯誤包括：</p>
+                    <p data-i18n="help.errorHandling.content"></p>
                     <ul>
-                      <li>無效的 Base64 字串</li>
-                      <li>無效的位元組陣列格式</li>
-                      <li>無效的 JSON 格式</li>
-                      <li>MsgPack 解碼或編碼失敗</li>
+                      <li data-i18n="help.errorHandling.error1"></li>
+                      <li data-i18n="help.errorHandling.error2"></li>
+                      <li data-i18n="help.errorHandling.error3"></li>
+                      <li data-i18n="help.errorHandling.error4"></li>
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFive">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                    主題設定
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" data-i18n="help.themeSettings.title">
                   </button>
                 </h2>
                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#helpAccordion">
                   <div class="accordion-body">
-                    <p>本工具支援三種顯示模式，可以從頁面右上角的主題選單中切換：</p>
+                    <p data-i18n="help.themeSettings.content"></p>
                     <ul>
-                      <li><strong>一般模式</strong>：傳統的亮色界面</li>
-                      <li><strong>深色模式</strong>：降低亮度，減少眼睛疲勞，適合夜間使用</li>
-                      <li><strong>跟隨系統</strong>：根據您的系統設定自動切換亮色或深色模式</li>
+                      <li data-i18n="help.themeSettings.mode1"></li>
+                      <li data-i18n="help.themeSettings.mode2"></li>
+                      <li data-i18n="help.themeSettings.mode3"></li>
                     </ul>
-                    <p>您的主題偏好會被保存，下次訪問時會自動應用。</p>
+                    <p data-i18n="help.themeSettings.note"></p>
                   </div>
                 </div>
               </div>
             </div>
             
             <div class="help-section mt-4">
-              <h4>使用技巧</h4>
+              <h4 data-i18n="help.tips.title"></h4>
               <div class="card">
                 <div class="card-body">
                   <ul class="mb-0">
-                    <li>工具支援巢狀 MsgPack 結構的自動解碼</li>
-                    <li>編碼結果是格式化的 JSON，便於閱讀</li>
-                    <li>支援各種 JSON 數據類型，包括字串、數字、布爾值、陣列和物件</li>
-                    <li>對於複雜的數據結構，建議先使用編碼功能生成 MsgPack，再使用解碼功能測試結果</li>
-                    <li>大型數據可能需要稍長的處理時間，請耐心等待</li>
+                    <li data-i18n="help.tips.tip1"></li>
+                    <li data-i18n="help.tips.tip2"></li>
+                    <li data-i18n="help.tips.tip3"></li>
+                    <li data-i18n="help.tips.tip4"></li>
+                    <li data-i18n="help.tips.tip5"></li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="modal.close"></button>
           </div>
         </div>
       </div>
@@ -316,4 +345,5 @@
   </script>
   <script async src="js/index.js"></script>
   <script src="js/theme.js"></script>
+  <script src="js/i18n.js"></script>
 </html>
