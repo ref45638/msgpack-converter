@@ -12,10 +12,12 @@ function setTheme(theme) {
       document.documentElement.setAttribute('data-theme', THEME_DARK);
       document.body.classList.add('dark-theme');
       updateThemeIcon(THEME_DARK);
+      applyThemeToAllElements(THEME_DARK);
     } else {
       document.documentElement.setAttribute('data-theme', THEME_LIGHT);
       document.body.classList.remove('dark-theme');
       updateThemeIcon(THEME_LIGHT);
+      applyThemeToAllElements(THEME_LIGHT);
     }
     
     // 監聽系統主題變化
