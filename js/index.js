@@ -77,6 +77,23 @@ decodeByteArray = () => {
       return;
     }
 
+    // 新增判斷是否為 base64 字串
+    const str = String.fromCharCode(...byteArray);
+    const base64Regex = /^[A-Za-z0-9+/=]+$/;
+    if (base64Regex.test(str) && str.length % 4 === 0) {
+      // 是 base64，直接用 decodeBase64 的流程
+      try {
+        var after = decode(_base64ToArrayBuffer(str));
+        document.getElementById("after").value = JSON.stringify(after);
+        prettyPrint();
+        return;
+      } catch (error) {
+        showError("Base64 解碼失敗: " + error.message);
+        return;
+      }
+    }
+
+    // 否則用原本流程
     var after = decode(byteArray);
     document.getElementById("after").value = JSON.stringify(after);
     prettyPrint();
