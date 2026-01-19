@@ -42,6 +42,35 @@ decodeBase64 = () => {
   }
 };
 
+decodeHex = () => {
+  try {
+    hideError();
+    var before = document.getElementById("before").value.trim();
+
+    if (!before) {
+      showError("請輸入 Hex 字串");
+      return;
+    }
+
+    // 移除所有空格
+    before = before.replace(/\s+/g, "");
+
+    // 檢查是否是有效的 Hex
+    const hexRegex = /^[0-9A-Fa-f]+$/;
+    if (!hexRegex.test(before) || before.length % 2 !== 0) {
+      showError("無效的 Hex 字串");
+      return;
+    }
+
+    var byteArray = _hexToByteArray(before);
+    var after = decode(byteArray);
+    document.getElementById("after").value = JSON.stringify(after);
+    prettyPrint();
+  } catch (error) {
+    showError("解碼失敗: " + error.message);
+  }
+};
+
 decodeByteArray = () => {
   try {
     hideError();
@@ -146,6 +175,32 @@ encodeToBase64 = () => {
   }
 };
 
+encodeToHex = () => {
+  try {
+    hideError();
+    var after = document.getElementById("after").value;
+
+    if (!after) {
+      showError("請輸入 JSON 資料");
+      return;
+    }
+
+    var jsonData;
+    try {
+      jsonData = JSON.parse(after);
+    } catch (err) {
+      showError("無效的 JSON 格式: " + err.message);
+      return;
+    }
+
+    var byteArray = msgpack.encode(jsonData);
+    var before = _byteArrayToHex(byteArray);
+    document.getElementById("before").value = before;
+  } catch (error) {
+    showError("編碼失敗: " + error.message);
+  }
+};
+
 encodeToByteArray = () => {
   try {
     hideError();
@@ -200,6 +255,23 @@ _arrayBufferToBase64 = (buffer) => {
     binary += String.fromCharCode(bytes[i]);
   }
   return window.btoa(binary);
+};
+
+_hexToByteArray = (hexString) => {
+  if (hexString.length % 2 !== 0) {
+    throw new Error("Invalid hex string");
+  }
+  var bytes = new Uint8Array(hexString.length / 2);
+  for (var i = 0; i < hexString.length; i += 2) {
+    bytes[i / 2] = parseInt(hexString.substr(i, 2), 16);
+  }
+  return bytes;
+};
+
+_byteArrayToHex = (byteArray) => {
+  return Array.from(byteArray, function (byte) {
+    return ("0" + (byte & 0xff).toString(16)).slice(-2);
+  }).join(" ");
 };
 
 prettyPrint = () => {

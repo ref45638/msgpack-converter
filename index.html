@@ -1,12 +1,12 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="utf-8" />
-    <title>MsgPack Converter | MsgPack to JSON Decoder and Encoder</title>
+    <title>MsgPack Converter | MsgPack to JSON Decoder and Encoder (Base64/Hex/Byte Array)</title>
     <meta
       name="description"
-      content="MsgPack Converter helps Decode and Encode between MsgPack(base64 or []byte) and JSON. It is an easy and simple use online tool to convert your data."
+      content="MsgPack Converter helps Decode and Encode between MsgPack(base64, hex or []byte) and JSON. It is an easy and simple use online tool to convert your data."
     />
-    <meta name="keywords" content="MessagePack,msgpack,JSON,Decoder,Encoder,Converter" />
+    <meta name="keywords" content="MessagePack,msgpack,JSON,Decoder,Encoder,Converter,Hex,Hexadecimal,Online Tool,Developer Tools" />
     <link rel="canonical" href="https://ref45638.github.io/msgpack-converter/" />
     <link rel="alternate" hreflang="en" href="https://ref45638.github.io/msgpack-converter/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://ref45638.github.io/msgpack-converter/" />
@@ -15,15 +15,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ref45638.github.io/msgpack-converter/">
-    <meta property="og:title" content="MsgPack Converter | MsgPack to JSON Decoder and Encoder">
-    <meta property="og:description" content="An easy and simple online tool to decode and encode between MsgPack (in base64 or byte array) and JSON.">
+    <meta property="og:title" content="MsgPack Converter | MsgPack to JSON Decoder and Encoder (Base64/Hex/Byte Array)">
+    <meta property="og:description" content="An easy and simple online tool to decode and encode between MsgPack (in base64, hex or byte array) and JSON.">
     <!-- <meta property="og:image" content="URL_to_your_image.jpg"> -->
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ref45638.github.io/msgpack-converter/">
-    <meta property="twitter:title" content="MsgPack Converter | MsgPack to JSON Decoder and Encoder">
-    <meta property="twitter:description" content="An easy and simple online tool to decode and encode between MsgPack (in base64 or byte array) and JSON.">
+    <meta property="twitter:title" content="MsgPack Converter | MsgPack to JSON Decoder and Encoder (Base64/Hex/Byte Array)">
+    <meta property="twitter:description" content="An easy and simple online tool to decode and encode between MsgPack (in base64, hex or byte array) and JSON.">
     <!-- <meta property="twitter:image" content="URL_to_your_image.jpg"> -->
 
     <script type="application/ld+json">
@@ -33,7 +33,7 @@
       "name": "MsgPack Converter",
       "operatingSystem": "WEB",
       "applicationCategory": "DeveloperApplication",
-      "description": "An online tool to decode and encode data between MessagePack (MsgPack) and JSON formats. Supports base64 and byte array inputs.",
+      "description": "An online tool to decode and encode data between MessagePack (MsgPack) and JSON formats. Supports base64, hex and byte array inputs.",
       "url": "https://ref45638.github.io/msgpack-converter/",
       "author": {
         "@type": "Person",
@@ -173,10 +173,12 @@
           <div class="row-1">
             <div class="col" style="margin-top: 200">
               <button class="btn btn-outline-primary theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="decodeBase64()" data-i18n="button.decodeBase64"></button>
+              <button class="btn btn-outline-primary theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="decodeHex()" data-i18n="button.decodeHex"></button>
               <button class="btn btn-outline-primary theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="decodeByteArray()" data-i18n="button.decodeByteArray"></button>
             </div>
             <div class="col" style="margin-top: 200">
               <button class="btn btn-outline-dark theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="encodeToBase64()" data-i18n="button.encodeBase64"></button>
+              <button class="btn btn-outline-dark theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="encodeToHex()" data-i18n="button.encodeHex"></button>
               <button class="btn btn-outline-dark theme-aware-btn" style="width: 100%; margin: 10 0 10 0" onclick="encodeToByteArray()" data-i18n="button.encodeByteArray"></button>
             </div>
           </div>
