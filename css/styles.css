@@ -505,3 +505,43 @@ textarea {
   margin-top: 5px; /* 增加與頂部的間距 */
   padding: 0px 10px 0px 10px; /* 增加內邊距 */
 }
+
+/* Footer 樣式 */
+footer.theme-aware-container {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+footer h2, footer h3 {
+  color: var(--help-title);
+}
+
+footer ul {
+  padding-left: 20px;
+}
+
+footer section {
+  margin-bottom: 15px;
+}
+
+[data-theme="dark"] footer {
+  background-color: #1a1a1a !important;
+  border-top-color: #333;
+}
+
+[data-theme="dark"] footer h2,
+[data-theme="dark"] footer h3 {
+  color: #4d97ff;
+}
+
+[data-theme="dark"] footer hr {
+  border-color: #333;
+}
+
+[data-theme="dark"] footer a {
+  color: #4d97ff;
+}
+
+[data-theme="dark"] footer a:hover {
+  color: #61a5ff;
+}

@@ -66,5 +66,20 @@
   "help.tips.tip5": "大型數據可能需要稍長的處理時間，請耐心等待",
   "language.title": "語言",
   "language.en": "English",
-  "language.zh-Hant": "繁體中文"
+  "language.zh-Hant": "繁體中文",
+  "footer.about.title": "關於 MsgPack Converter",
+  "footer.about.description": "MsgPack Converter 是一個免費的線上開發者工具，用於在 MessagePack 和 JSON 格式之間進行轉換。MessagePack 是一種高效的二進位序列化格式，比 JSON 小 20-40%，同時與多種程式語言相容。",
+  "footer.features.title": "主要功能",
+  "footer.features.feature1": "將 Base64、Hex 或 Byte Array 格式的 MsgPack 解碼為 JSON",
+  "footer.features.feature2": "將 JSON 編碼為 Base64、Hex 或 Byte Array 格式的 MsgPack",
+  "footer.features.feature3": "100% 客戶端處理 - 您的資料不會離開您的瀏覽器",
+  "footer.features.feature4": "支援巢狀的 MsgPack 結構",
+  "footer.features.feature5": "深色模式和多語言支援",
+  "footer.usecases.title": "常見用途",
+  "footer.usecases.usecase1": "除錯 MessagePack 格式的 API 回應",
+  "footer.usecases.usecase2": "在不同格式之間轉換設定檔",
+  "footer.usecases.usecase3": "測試和驗證 MsgPack 編碼",
+  "footer.usecases.usecase4": "學習和理解 MessagePack 二進位格式",
+  "footer.copyright": "© 2024-2026 MsgPack Converter. 開源於",
+  "footer.keywords": "關鍵字:"
 }

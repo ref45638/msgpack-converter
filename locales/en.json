@@ -66,5 +66,20 @@
   "help.tips.tip5": "Large data may require slightly longer processing time, please be patient",
   "language.title": "Language",
   "language.en": "English",
-  "language.zh-Hant": "繁體中文"
+  "language.zh-Hant": "繁體中文",
+  "footer.about.title": "About MsgPack Converter",
+  "footer.about.description": "MsgPack Converter is a free online tool for developers to convert between MessagePack and JSON formats. MessagePack is an efficient binary serialization format that is 20-40% smaller than JSON while maintaining compatibility with multiple programming languages.",
+  "footer.features.title": "Key Features",
+  "footer.features.feature1": "Decode MsgPack from Base64, Hex, or Byte Array to JSON",
+  "footer.features.feature2": "Encode JSON to MsgPack in Base64, Hex, or Byte Array format",
+  "footer.features.feature3": "100% client-side processing - your data never leaves your browser",
+  "footer.features.feature4": "Support for nested MsgPack structures",
+  "footer.features.feature5": "Dark mode and multi-language support",
+  "footer.usecases.title": "Common Use Cases",
+  "footer.usecases.usecase1": "Debugging API responses in MessagePack format",
+  "footer.usecases.usecase2": "Converting configuration files between formats",
+  "footer.usecases.usecase3": "Testing and validating MsgPack encoding",
+  "footer.usecases.usecase4": "Learning and understanding MessagePack binary format",
+  "footer.copyright": "© 2024-2026 MsgPack Converter. Open Source on",
+  "footer.keywords": "Keywords:"
 }
