@@ -16,11 +16,10 @@
 
 ### Features
 
-- Pure JavaScript only (Use CDN by [msgpack-lite](https://github.com/kawanet/msgpack-lite))
-- Decoder MsgPack (base64 or Uint8Array) to JSON
-- Encoder JSON to MsgPack (base64 or Uint8Array)
-- Decode in loop if data is also MsgPack
+- Pure JavaScript only (Use CDN by [@msgpack/msgpack](https://github.com/msgpack/msgpack-javascript))
+- Decoder MsgPack (Base64, Hex, or Go []byte) to JSON
+- Encoder JSON to MsgPack (Base64, Hex, or Go []byte)
+- Clean split-view interface
 
 ### Thanks
-Thanks to https://github.com/kawanet/msgpack-lite
-Thanks to https://github.com/twbs/bootstrap
+Thanks to https://github.com/msgpack/msgpack-javascript
