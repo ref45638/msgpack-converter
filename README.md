@@ -23,3 +23,7 @@
 
 ### Thanks
 Thanks to https://github.com/msgpack/msgpack-javascript
+
+<p align="center">
+  <img src="https://api.star-history.com/svg?repos=ref45638/msgpack-converter&type=Date" />
+</p>
